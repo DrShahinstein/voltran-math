@@ -1,0 +1,7 @@
+.layout {
+  @apply w-full;
+  @apply h-full;
+  @apply bg-gray-100;
+  @apply flex;
+  @apply items-center;
+}

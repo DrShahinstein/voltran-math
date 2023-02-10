@@ -1,0 +1,7 @@
+.btn-blue {
+  @apply bg-blue-500;
+  @apply hover:bg-blue-700;
+  @apply text-white;
+  @apply p-5;
+  @apply rounded-lg;
+}

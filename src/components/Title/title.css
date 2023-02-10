@@ -1,0 +1,12 @@
+.title {
+  @apply text-4xl;
+  @apply font-bold;
+  @apply mb-10;
+  @apply text-center;
+}
+
+.subtitle {
+  @apply text-lg;
+  @apply mb-10;
+  @apply text-center;
+}

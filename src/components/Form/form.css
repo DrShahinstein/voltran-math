@@ -1,0 +1,13 @@
+.form {
+  @apply flex;
+  @apply flex-col;
+}
+
+.input {
+  @apply border;
+  @apply rounded-lg;
+  @apply py-3;
+  @apply px-5;
+  @apply mb-5;
+  @apply w-full;
+}
