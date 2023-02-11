@@ -69,12 +69,18 @@ export default function App() {
             <Form.Input ref={zRef}>Z Giriniz</Form.Input>
             <Form.Input ref={aRef}>A Giriniz</Form.Input>
             <div className="text-center mt-10">
-              <Button type="submit" />
+              <Button type="submit">Submit</Button>
             </div>
           </Form>
         </div>
       </Layout>
     );
 
-  return <Result inputs={inputs} outputs={outputs} />;
+  return (
+    <Result
+      inputs={inputs}
+      outputs={outputs}
+      setResultVisibility={setResultVisibility}
+    />
+  );
 }
