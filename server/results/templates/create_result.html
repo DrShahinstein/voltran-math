@@ -1,0 +1,21 @@
+<!-- create_result.html -->
+<html>
+  <body>
+    <h1>Create Result</h1>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      <label for="input_name">Input Name:</label>
+      <input type="text" id="input_name" name="input_name" /><br /><br />
+      <label for="input_value">Input Value:</label>
+      <input type="number" id="input_value" name="input_value" /><br /><br />
+      <label for="output_name">Output Name:</label>
+      <input type="text" id="output_name" name="output_name" /><br /><br />
+      <label for="output_value">Output Value:</label>
+      <input type="number" id="output_value" name="output_value" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
