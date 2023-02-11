@@ -1,4 +1,5 @@
 import React from "react";
+import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import "./result.css";
 
 export default function Result(props) {
@@ -6,6 +7,10 @@ export default function Result(props) {
   const inputCount = inputs.length;
   const outputs = props.outputs;
   const outputCount = inputs.length;
+
+  const hideResults = () => {
+    props.setResultVisibility(false);
+  };
 
   return (
     <div className="result-container">
@@ -36,18 +41,21 @@ export default function Result(props) {
             })}
           </div>
         </div>
-        <footer className="text-sm text-gray-600 mt-4">
+        <footer className="result-footer">
           <p>
             Check out the source code on{" "}
             <a
               href="https://www.github.com/DrShahinstein"
-              className="text-indigo-600 font-medium"
+              className="result-footer--github"
               target="_blank"
               rel="noreferrer"
             >
               GitHub
             </a>
           </p>
+          <span className="result-footer--back" onClick={hideResults}>
+            <BsFillArrowRightSquareFill />
+          </span>
         </footer>
       </div>
     </div>
