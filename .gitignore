@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Django
+/server/db.sqlite3
+__pycache__/
+.env
