@@ -25,4 +25,5 @@ yarn-error.log*
 # Django
 /server/db.sqlite3
 __pycache__/
+__pycache__/*
 .env
