@@ -21,6 +21,7 @@
 .result-title {
   @apply text-2xl;
   @apply font-medium;
+  @apply font-mono;
   @apply text-white;
   @apply bg-indigo-600;
   @apply rounded-tl-md;
@@ -51,4 +52,24 @@
   @apply text-xl;
   @apply font-bold;
   @apply text-indigo-600;
+}
+
+.result-footer {
+  @apply text-sm;
+  @apply text-gray-600;
+  @apply mt-4;
+  @apply flex;
+  @apply justify-between;
+  margin-bottom: -5px !important;
+}
+
+.result-footer--github {
+  @apply text-indigo-600;
+  @apply font-medium;
+}
+
+.result-footer--back {
+  @apply text-indigo-600;
+  @apply font-medium;
+  @apply text-3xl;
 }
