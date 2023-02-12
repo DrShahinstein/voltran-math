@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import "./result.css";
+
+const API = "http://127.0.0.1:8000/api";
 
 export default function Result(props) {
   const inputs = props.inputs;
   const inputCount = inputs.length;
   const outputs = props.outputs;
-  const outputCount = inputs.length;
+  const outputCount = outputs.length;
+
+  useEffect(() => {
+    const createResult = async () => {
+      const response = await axios.post(`${API}/results/create/`, {
+        result_name: "result_name",
+        inputs: inputs,
+        outputs: outputs,
+      });
+      console.log(response.data);
+    };
+    createResult();
+  }, [inputs, outputs]);
 
   const hideResults = () => {
     props.setResultVisibility(false);
