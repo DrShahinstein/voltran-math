@@ -18,11 +18,13 @@ export default function Result(props) {
 
   const createResult = async () => {
     var resultName = resultNameRef.current.value;
-    const response = await axios.post(`${API}/results/create/`, {
-      result_name: resultName,
-      inputs: inputs,
-      outputs: outputs,
-    });
+    await axios
+      .post(`${API}/results/create/`, {
+        result_name: resultName,
+        inputs: inputs,
+        outputs: outputs,
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
