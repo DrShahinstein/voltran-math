@@ -104,4 +104,5 @@
   @apply text-indigo-600;
   @apply font-medium;
   @apply text-3xl;
+  @apply cursor-pointer;
 }
