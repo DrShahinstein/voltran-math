@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from core.models import Result, Input, Output
 
 
@@ -26,6 +27,10 @@ class ResultSerializer(serializers.ModelSerializer):
         result_name = validated_data["result_name"]
         inputs = validated_data["inputs"]
         outputs = validated_data["outputs"]
+
+        if Result.objects.filter(result_name=result_name).exists():
+            raise ValidationError(
+                f"Result with name {result_name} already exists.")
 
         result = Result(result_name=result_name)
         result.save()
