@@ -1,9 +1,8 @@
-body {
-  margin: 0;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
+.btn-submit {
+  @apply bg-blue-500;
+  @apply hover:bg-blue-700;
+  @apply text-white;
+  @apply font-bold;
+  @apply rounded-lg;
+  @apply p-5;
 }
