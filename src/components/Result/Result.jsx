@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import axios from "axios";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import "./result.css";
@@ -10,25 +10,35 @@ export default function Result(props) {
   const inputCount = inputs.length;
   const outputs = props.outputs;
   const outputCount = outputs.length;
-
-  useEffect(() => {
-    const createResult = async () => {
-      const response = await axios.post(`${API}/results/create/`, {
-        result_name: "result_name",
-        inputs: inputs,
-        outputs: outputs,
-      });
-      console.log(response.data);
-    };
-    createResult();
-  }, [inputs, outputs]);
+  const resultNameRef = useRef("result_name");
 
   const hideResults = () => {
     props.setResultVisibility(false);
   };
 
+  const createResult = async () => {
+    var resultName = resultNameRef.current.value;
+    const response = await axios.post(`${API}/results/create/`, {
+      result_name: resultName,
+      inputs: inputs,
+      outputs: outputs,
+    });
+    console.log(response.data);
+  };
+
   return (
     <div className="result-container">
+      <header className="result-header">
+        <input
+          type="text"
+          className="result-header--input"
+          placeholder="Result name goes here"
+          ref={resultNameRef}
+        />
+        <button className="result-header--button" onClick={createResult}>
+          Save
+        </button>
+      </header>
       <div className="result-container--inner">
         <div className="mb-6">
           <h2 className="result-title">In [{inputCount}]</h2>
