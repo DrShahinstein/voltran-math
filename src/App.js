@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import Button from "./components/Button/Button";
 import Form from "./components/Form/Form";
 import Title from "./components/Title/Title";
 import Layout from "./components/Layout/Layout";
@@ -69,7 +68,9 @@ export default function App() {
             <Form.Input ref={zRef}>Z Giriniz</Form.Input>
             <Form.Input ref={aRef}>A Giriniz</Form.Input>
             <div className="text-center mt-10">
-              <Button type="submit">Submit</Button>
+              <button type="submit" className="btn-submit">
+                Submit
+              </button>
             </div>
           </Form>
         </div>
