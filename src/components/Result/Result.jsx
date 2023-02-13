@@ -23,7 +23,6 @@ export default function Result(props) {
       inputs: inputs,
       outputs: outputs,
     });
-    console.log(response.data);
   };
 
   return (
