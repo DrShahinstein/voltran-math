@@ -18,6 +18,38 @@
   @apply rounded;
 }
 
+.result-header {
+  @apply bg-white;
+  @apply px-4;
+  @apply py-3;
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
+  @apply shadow-lg;
+}
+
+.result-header--input {
+  @apply w-full;
+  @apply border;
+  @apply border-gray-400;
+  @apply p-2;
+  @apply rounded-lg;
+  @apply rounded-r-none;
+  @apply focus:outline-none;
+}
+
+.result-header--button {
+  @apply bg-indigo-500;
+  @apply hover:bg-indigo-700;
+  @apply text-white;
+  @apply font-bold;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply rounded-l-none;
+  @apply focus:outline-none;
+}
+
 .result-title {
   @apply text-2xl;
   @apply font-medium;
