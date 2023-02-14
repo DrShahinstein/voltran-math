@@ -1,0 +1,168 @@
+.modal-overlay {
+  @apply fixed;
+  @apply top-0;
+  @apply bottom-0;
+  @apply left-0;
+  @apply right-0;
+  @apply flex;
+  @apply justify-center;
+  @apply items-center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  @apply fixed;
+  @apply top-[-3rem];
+  @apply left-[50%];
+  @apply right-[50%];
+  @apply w-full;
+  @apply max-w-[90%];
+  @apply h-full;
+  @apply max-w-[500px];
+  @apply outline-none;
+  @apply overflow-x-hidden;
+  @apply overflow-y-auto;
+  @apply translate-x-[-50%];
+  animation: slide 500ms ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.modal-dialog {
+  @apply relative;
+  @apply w-auto;
+  @apply pointer-events-none;
+}
+
+.modal-dialog--inner {
+  @apply border-none;
+  @apply shadow-lg;
+  @apply relative;
+  @apply flex;
+  @apply flex-col;
+  @apply w-full;
+  @apply pointer-events-auto;
+  @apply bg-white;
+  @apply bg-clip-padding;
+  @apply rounded-md;
+  @apply outline-none;
+  @apply text-current;
+}
+
+.modal-header {
+  @apply flex;
+  @apply flex-shrink-0;
+  @apply items-center;
+  @apply justify-between;
+  @apply p-4;
+  @apply border-b;
+  @apply border-gray-200;
+  @apply rounded-t-md;
+}
+
+.modal-header--title {
+  @apply text-xl;
+  @apply font-bold;
+  @apply leading-normal;
+  @apply text-gray-800;
+  @apply capitalize;
+}
+
+.modal-header--close-btn {
+  @apply box-content;
+  @apply w-4;
+  @apply h-4;
+  @apply p-1;
+  @apply text-black;
+  @apply border-none;
+  @apply rounded-none;
+  @apply opacity-50;
+  @apply focus:shadow-none;
+  @apply focus:outline-none;
+  @apply focus:opacity-100;
+  @apply hover:text-black;
+  @apply hover:opacity-75;
+  @apply hover:no-underline;
+}
+
+.modal-body {
+  @apply relative;
+  @apply p-4;
+}
+
+.modal-body code {
+  @apply text-purple-600;
+  @apply font-medium;
+}
+
+.modal-footer {
+  @apply flex;
+  @apply flex-shrink-0;
+  @apply flex-wrap;
+  @apply items-center;
+  @apply justify-end;
+  @apply p-4;
+  @apply border-t;
+  @apply border-gray-200;
+  @apply rounded-b-md;
+}
+
+.modal-footer--close-btn {
+  @apply inline-block;
+  @apply px-6;
+  @apply py-2.5;
+  @apply bg-purple-600;
+  @apply text-white;
+  @apply font-bold;
+  @apply text-xs;
+  @apply leading-tight;
+  @apply uppercase;
+  @apply rounded;
+  @apply shadow-md;
+  @apply hover:bg-purple-700;
+  @apply hover:shadow-lg;
+  @apply focus:bg-purple-700;
+  @apply focus:shadow-lg;
+  @apply focus:outline-none;
+  @apply focus:ring-0;
+  @apply active:bg-purple-800;
+  @apply active:shadow-lg;
+  @apply transition;
+  @apply duration-150;
+  @apply ease-in-out;
+}
+
+.modal-footer--ok-btn {
+  @apply inline-block;
+  @apply px-6;
+  @apply py-2.5;
+  @apply bg-blue-600;
+  @apply text-white;
+  @apply font-bold;
+  @apply text-xs;
+  @apply leading-tight;
+  @apply uppercase;
+  @apply rounded;
+  @apply shadow-md;
+  @apply hover:bg-blue-700;
+  @apply hover:shadow-lg;
+  @apply focus:bg-blue-700;
+  @apply focus:shadow-lg;
+  @apply focus:outline-none;
+  @apply focus:ring-0;
+  @apply active:bg-blue-800;
+  @apply active:shadow-lg;
+  @apply transition;
+  @apply duration-150;
+  @apply ease-in-out ml-1;
+}
+
+@keyframes slide {
+  from {
+    margin-top: 0;
+    opacity: 0;
+  }
+  to {
+    margin-top: 4rem;
+    opacity: 1;
+  }
+}
