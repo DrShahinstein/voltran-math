@@ -12,6 +12,6 @@ class Output(models.Model):
 
 
 class Result(models.Model):
-    result_name = models.CharField(max_length=100, default="RESULT_NAME")
+    result_name = models.CharField(max_length=100, default="RESULT_NAME", unique=True)
     inputs = models.ManyToManyField(Input)
     outputs = models.ManyToManyField(Output)
