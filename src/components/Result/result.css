@@ -106,3 +106,24 @@
   @apply text-3xl;
   @apply cursor-pointer;
 }
+
+@media only screen and (max-width: 650px) {
+  .result-container {
+    @apply h-auto;
+  }
+  .result-title {
+    @apply text-xl;
+  }
+  .result-content-name {
+    @apply text-sm;
+  }
+  .result-content-value {
+    @apply text-sm;
+  }
+  .result-footer {
+    font-size: 11px;
+  }
+  .result-footer--back {
+    @apply text-2xl;
+  }
+}
