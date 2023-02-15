@@ -67,7 +67,10 @@ export default function App() {
             <Form.Input ref={yRef}>Y Giriniz</Form.Input>
             <Form.Input ref={zRef}>Z Giriniz</Form.Input>
             <Form.Input ref={aRef}>A Giriniz</Form.Input>
-            <div className="text-center mt-10">
+            <div className="form-buttons">
+              <button type="submit" className="btn-results">
+                Results
+              </button>
               <button type="submit" className="btn-submit">
                 Submit
               </button>
