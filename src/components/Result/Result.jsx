@@ -61,17 +61,22 @@ export default function Result(props) {
   return (
     <>
       <div className="result-container">
-        <header className="result-header">
-          <input
-            type="text"
-            className="result-header--input"
-            placeholder="Result name goes here"
-            ref={resultNameRef}
-          />
-          <button className="result-header--button" onClick={createResult}>
-            Save
-          </button>
-        </header>
+        {props.header ? (
+          props.header
+        ) : (
+          <header className="result-header">
+            <input
+              type="text"
+              className="result-header--input"
+              id="result-name-input"
+              placeholder="Result name goes here"
+              ref={resultNameRef}
+            />
+            <button className="result-header--button" onClick={createResult}>
+              Save
+            </button>
+          </header>
+        )}
         <div className="result-container--inner">
           <div className="mb-6">
             <h2 className="result-title">In [{inputCount}]</h2>
@@ -111,9 +116,13 @@ export default function Result(props) {
                 GitHub
               </a>
             </p>
-            <span className="result-footer--back" onClick={hideResults}>
-              <BsFillArrowRightSquareFill />
-            </span>
+            {props.footerElement ? (
+              props.footerElement
+            ) : (
+              <span className="result-footer--back" onClick={hideResults}>
+                <BsFillArrowRightSquareFill />
+              </span>
+            )}
           </footer>
         </div>
       </div>
