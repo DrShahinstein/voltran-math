@@ -6,3 +6,20 @@
   @apply rounded-lg;
   @apply p-5;
 }
+
+.btn-results {
+  @apply bg-indigo-500;
+  @apply hover:bg-indigo-700;
+  @apply text-white;
+  @apply font-bold;
+  @apply rounded-lg;
+  @apply p-5;
+}
+
+.form-buttons {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+  @apply text-center;
+  @apply mt-10;
+}
