@@ -8,7 +8,7 @@ export default function Form(props) {
     </form>
   );
 }
-// const FancyButton = React.forwardRef((props, ref) => (
+
 const Input = forwardRef((props, ref) => {
   return (
     <label className="block mb-2">
