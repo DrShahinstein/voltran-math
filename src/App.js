@@ -3,10 +3,12 @@ import Form from "./components/Form/Form";
 import Title from "./components/Title/Title";
 import Layout from "./components/Layout/Layout";
 import Result from "./components/Result/Result";
+import ResultsList from "./components/ResultsList/ResultsList";
 import "./App.css";
 
 export default function App() {
   const [resultVisibility, setResultVisibility] = useState(false);
+  const [showResultsList, setShowResultsList] = useState(false);
   const [inputs, setInputs] = useState([]);
   const [outputs, setOutputs] = useState([]);
   const inputNames = ["xInput", "yInput", "zInput", "aInput"]; // Desired inputs
@@ -25,7 +27,7 @@ export default function App() {
   };
 
   const showResults = () => {
-    // TODO: Show results
+    setShowResultsList(true);
   };
 
   const handleSubmit = (e) => {
@@ -44,39 +46,39 @@ export default function App() {
     setResultVisibility(true);
   };
 
-  if (!resultVisibility)
+  if (resultVisibility)
     return (
-      <Layout>
-        <div className="max-w-md mx-auto p-10">
-          <Title>Voltran MathLab</Title>
-          <Title.Subtitle>Girdileri girin ve hesaplayın!</Title.Subtitle>
-          <Form handler={handleSubmit}>
-            <Form.Input ref={refs.xInput}>X Giriniz</Form.Input>
-            <Form.Input ref={refs.yInput}>Y Giriniz</Form.Input>
-            <Form.Input ref={refs.zInput}>Z Giriniz</Form.Input>
-            <Form.Input ref={refs.aInput}>A Giriniz</Form.Input>
-            <div className="form-buttons">
-              <button
-                type="button"
-                className="btn-results"
-                onClick={showResults}
-              >
-                Results
-              </button>
-              <button type="submit" className="btn-submit">
-                Submit
-              </button>
-            </div>
-          </Form>
-        </div>
-      </Layout>
+      <Result
+        inputs={inputs}
+        outputs={outputs}
+        setResultVisibility={setResultVisibility}
+      />
     );
 
+  if (showResultsList) {
+    return <ResultsList setShowResultsList={setShowResultsList} />;
+  }
+
   return (
-    <Result
-      inputs={inputs}
-      outputs={outputs}
-      setResultVisibility={setResultVisibility}
-    />
+    <Layout>
+      <div className="max-w-md mx-auto p-10">
+        <Title>Voltran MathLab</Title>
+        <Title.Subtitle>Girdileri girin ve hesaplayın!</Title.Subtitle>
+        <Form handler={handleSubmit}>
+          <Form.Input ref={refs.xInput}>X Giriniz</Form.Input>
+          <Form.Input ref={refs.yInput}>Y Giriniz</Form.Input>
+          <Form.Input ref={refs.zInput}>Z Giriniz</Form.Input>
+          <Form.Input ref={refs.aInput}>A Giriniz</Form.Input>
+          <div className="form-buttons">
+            <button type="button" className="btn-results" onClick={showResults}>
+              Results
+            </button>
+            <button type="submit" className="btn-submit">
+              Submit
+            </button>
+          </div>
+        </Form>
+      </div>
+    </Layout>
   );
 }
