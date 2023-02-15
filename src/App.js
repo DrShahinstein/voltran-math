@@ -9,50 +9,38 @@ export default function App() {
   const [resultVisibility, setResultVisibility] = useState(false);
   const [inputs, setInputs] = useState([]);
   const [outputs, setOutputs] = useState([]);
-  const xRef = useRef(null);
-  const yRef = useRef(null);
-  const zRef = useRef(null);
-  const aRef = useRef(null);
+  const inputNames = ["xInput", "yInput", "zInput", "aInput"]; // Desired inputs
+  const outputNames = ["xOutput", "yOutput", "zOutput", "aOutput"]; // Desired outputs
+  const formulations = {
+    xOutput: 0, // Desired formula goes here
+    yOutput: 0, // Desired formula goes here
+    zOutput: 0, // Desired formula goes here
+    aOutput: 0, // Desired formula goes here
+  };
+  const refs = {
+    xInput: useRef(null),
+    yInput: useRef(null),
+    zInput: useRef(null),
+    aInput: useRef(null),
+  };
 
-  const calculate = (e) => {
+  const showResults = () => {
+    // TODO: Show results
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const xInput = {
-      name: "xInput",
-      value: parseInt(xRef.current.value),
-    };
-    const yInput = {
-      name: "yInput",
-      value: parseInt(yRef.current.value),
-    };
-    const zInput = {
-      name: "zInput",
-      value: parseInt(zRef.current.value),
-    };
-    const aInput = {
-      name: "aInput",
-      value: parseInt(aRef.current.value),
-    };
+    const inputs = inputNames.map((name) => {
+      return { name: name, value: parseInt(refs[name].current.value) };
+    });
 
-    const xOutput = {
-      name: "xOutput",
-      value: 0, // Calculation goes here
-    };
-    const yOutput = {
-      name: "yOutput",
-      value: 0, // Calculation goes here
-    };
-    const zOutput = {
-      name: "zOutput",
-      value: 0, // Calculation goes here
-    };
-    const aOutput = {
-      name: "aOutput",
-      value: 0, // Calculation goes here
-    };
+    const outputs = outputNames.map((name) => {
+      return { name: name, value: formulations[name] };
+    });
 
-    setInputs([xInput, yInput, zInput, aInput]);
-    setOutputs([xOutput, yOutput, zOutput, aOutput]);
+    setInputs(inputs);
+    setOutputs(outputs);
     setResultVisibility(true);
   };
 
@@ -62,13 +50,17 @@ export default function App() {
         <div className="max-w-md mx-auto p-10">
           <Title>Voltran MathLab</Title>
           <Title.Subtitle>Girdileri girin ve hesaplayın!</Title.Subtitle>
-          <Form handler={calculate}>
-            <Form.Input ref={xRef}>X Giriniz</Form.Input>
-            <Form.Input ref={yRef}>Y Giriniz</Form.Input>
-            <Form.Input ref={zRef}>Z Giriniz</Form.Input>
-            <Form.Input ref={aRef}>A Giriniz</Form.Input>
+          <Form handler={handleSubmit}>
+            <Form.Input ref={refs.xInput}>X Giriniz</Form.Input>
+            <Form.Input ref={refs.yInput}>Y Giriniz</Form.Input>
+            <Form.Input ref={refs.zInput}>Z Giriniz</Form.Input>
+            <Form.Input ref={refs.aInput}>A Giriniz</Form.Input>
             <div className="form-buttons">
-              <button type="submit" className="btn-results">
+              <button
+                type="button"
+                className="btn-results"
+                onClick={showResults}
+              >
                 Results
               </button>
               <button type="submit" className="btn-submit">
