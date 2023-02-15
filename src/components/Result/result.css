@@ -28,6 +28,12 @@
   @apply shadow-lg;
 }
 
+.result-header--name {
+  @apply text-purple-600;
+  @apply font-bold;
+  @apply text-3xl;
+}
+
 .result-header--input {
   @apply w-full;
   @apply border;
@@ -107,6 +113,13 @@
   @apply cursor-pointer;
 }
 
+.result-footer--delete {
+  @apply text-red-600;
+  @apply font-medium;
+  @apply text-2xl;
+  @apply cursor-pointer;
+}
+
 @media only screen and (max-width: 650px) {
   .result-container {
     @apply h-auto;
@@ -124,6 +137,9 @@
     font-size: 11px;
   }
   .result-footer--back {
+    @apply text-2xl;
+  }
+  .result-footer--delete {
     @apply text-2xl;
   }
 }
