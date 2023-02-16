@@ -11,20 +11,20 @@ export default class ResultsList extends Component {
   constructor(props) {
     super(props);
 
-    this.modalContent = {
-      title: "",
-      text: "",
+    this.deleteResult = this.deleteResult.bind(this);
+    this.setIsModalVisible = this.setIsModalVisible.bind(this);
+    this.state = {
+      results: [],
+      modalContent: { title: "", text: "" },
+      isModalVisible: false,
     };
   }
 
-  state = {
-    results: [],
-    modalContent: {},
-    isModalVisible: false,
-  };
-
-  deleteResult = async (resultToDelete) => {
-    const resultName = resultToDelete;
+  deleteResult = async (resultName) => {
+    /* 
+     resultName indicates the result to be deleted as we
+     use names of results like an ID to distinguish them so that we can choose which one to delete
+    */
 
     await axios
       .delete(`${API}/results/${resultName}/`)
@@ -36,18 +36,41 @@ export default class ResultsList extends Component {
         }));
       })
       .catch((err) => {
-        this.modalContent.title = err.message;
-        if (err.response.status === 204 || err.response.status === 404) {
-          this.modalContent.text = (
-            <span>
-              Any result with the name <code>{resultName}</code> was not found
-            </span>
-          );
-        } else {
-          this.modalContent.text = <span>Something went wrong.</span>;
-        }
+        const { modalContent } = this.state;
+
         this.setState({
-          modalContent: this.modalContent,
+          modalContent: {
+            ...modalContent,
+            title: err.message,
+          },
+        });
+
+        switch (err.response.status) {
+          case 204:
+          case 404:
+            this.setState({
+              modalContent: {
+                ...modalContent,
+                text: (
+                  <span>
+                    Any result with the name <code>{resultName}</code> was not
+                    found
+                  </span>
+                ),
+              },
+            });
+            break;
+          default:
+            this.setState({
+              modalContent: {
+                ...modalContent,
+                text: <span>Something went wrong.</span>,
+              },
+            });
+            break;
+        }
+
+        this.setState({
           isModalVisible: true,
         });
       });
