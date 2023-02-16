@@ -23,9 +23,8 @@ export default class ResultsList extends Component {
     isModalVisible: false,
   };
 
-  deleteResult = async (e) => {
-    const resultName = e.target.parentNode.parentElement.id;
-    console.log(resultName);
+  deleteResult = async (resultToDelete) => {
+    const resultName = resultToDelete;
 
     await axios
       .delete(`${API}/results/${resultName}/`)
@@ -81,25 +80,23 @@ export default class ResultsList extends Component {
         <div className="result-list">
           <div className="result-list--outer">
             {this.state.results.map((result) => {
+              const name = result.result_name;
               return (
-                <Fragment key={result.result_name}>
+                <Fragment key={name}>
                   <Result
                     inputs={result.inputs}
                     outputs={result.outputs}
                     footerElement={
                       <span
                         className="result-footer--delete"
-                        id={result.result_name}
-                        onClick={this.deleteResult}
+                        onClick={() => this.deleteResult(name)}
                       >
                         <BsFillTrashFill />
                       </span>
                     }
                     header={
                       <header className="result-header">
-                        <h1 className="result-header--name">
-                          {result.result_name}
-                        </h1>
+                        <h1 className="result-header--name">{name}</h1>
                       </header>
                     }
                   />
