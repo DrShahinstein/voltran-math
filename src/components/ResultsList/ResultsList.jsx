@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { BsFillTrashFill } from "react-icons/bs";
 import Result from "../Result/Result";
-import Modal from "../Result/Modal/Modal";
+import Modal from "../Modal/Modal";
 import axios from "axios";
 import "./resultslist.css";
 

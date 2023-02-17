@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import Modal from "./Modal/Modal";
+import Modal from "../Modal/Modal";
 import "./result.css";
 
 const API = "http://127.0.0.1:8000/api";
