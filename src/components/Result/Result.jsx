@@ -4,7 +4,7 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import Modal from "../Modal/Modal";
 import "./result.css";
 
-const API = "http://127.0.0.1:8000/api";
+const API = process.env.REACT_APP_API_URL;
 
 export default function Result(props) {
   const inputs = props.inputs;

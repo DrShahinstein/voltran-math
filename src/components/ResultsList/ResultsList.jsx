@@ -5,7 +5,7 @@ import Modal from "../Modal/Modal";
 import axios from "axios";
 import "./resultslist.css";
 
-const API = "http://127.0.0.1:8000/api";
+const API = process.env.REACT_APP_API_URL;
 
 export default class ResultsList extends Component {
   constructor(props) {
