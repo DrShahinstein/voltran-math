@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import axios from "axios";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import Modal from "../Modal/Modal";
@@ -15,12 +15,6 @@ export default function Result(props) {
   const resultNameRef = useRef("result_name");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState({});
-
-  useEffect(() => {
-    if (!isModalVisible) {
-      resultNameRef.current.focus();
-    }
-  }, [isModalVisible]);
 
   const hideResults = () => {
     props.setResultVisibility(false);
@@ -143,6 +137,7 @@ export default function Result(props) {
         content={modalContent}
         isVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
+        elementToFocus={resultNameRef.current}
       />
     </>
   );
