@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import Modal from "../Modal/Modal";
@@ -16,8 +16,18 @@ export default function Result(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
+  useEffect(() => {
+    if (!isModalVisible) {
+      resultNameRef.current.focus();
+    }
+  }, [isModalVisible]);
+
   const hideResults = () => {
     props.setResultVisibility(false);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") createResult();
   };
 
   const createResult = async () => {
@@ -56,6 +66,7 @@ export default function Result(props) {
         }
       });
     setIsModalVisible(true);
+    resultNameRef.current.value = ""; // Reset <input>
   };
 
   return (
@@ -70,6 +81,7 @@ export default function Result(props) {
               className="result-header--input"
               id="result-name-input"
               placeholder="Result name goes here"
+              onKeyDown={handleKeyDown}
               ref={resultNameRef}
             />
             <button className="result-header--button" onClick={createResult}>
