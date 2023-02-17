@@ -88,10 +88,11 @@ export default class ResultsList extends Component {
         this.setState({ results: res.data });
       })
       .catch((err) => {
-        this.modalContent.title = err.message;
-        this.modalContent.text = "Something went wrong.";
         this.setState({
-          modalContent: this.modalContent,
+          modalContent: {
+            title: err.message,
+            text: "Something went wrong.",
+          },
           isModalVisible: true,
         });
       });
