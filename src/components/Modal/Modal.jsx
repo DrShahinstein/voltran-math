@@ -5,8 +5,10 @@ import "./modal.css";
 export default function Modal(props) {
   const visible = props.isVisible;
   const modalContent = props.content;
+  const elementToFocus = props.elementToFocus;
 
   const hideModal = () => {
+    if (elementToFocus) elementToFocus.focus();
     props.setIsModalVisible(false);
   };
 
