@@ -1,6 +1,6 @@
 # Voltran Math
 
-As the captain and programmer of my school's FLL team, I developed a tool for our innovative project aimed at finding ways to save unnecessary energy used by street lamps that remain lit at night. This tool will assist us in performing the necessary calculations for our project. The FLL team is an extracurricular activity in which I participate.
+As the captain and programmer of my school's FLL team, I developed a tool for our innovative project aimed at finding ways to save unnecessary energy used by street lamps that remain lit at night. This tool will assist us in performing the necessary calculations for our project. The FLL team is an extracurricular activity in which I participate and Voltran is the name of the team.
 
 ## Technologies
 
