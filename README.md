@@ -1,6 +1,6 @@
 # Voltran Math
 
-As the captain of my school's FLL team, I developed a tool for our innovative project aimed at finding ways to save unnecessary energy used by street lamps that remain lit at night. This tool will assist us in performing the necessary calculations for our project. The FLL team is an extracurricular activity in which I participate.
+As the captain and programmer of my school's FLL team, I developed a tool for our innovative project aimed at finding ways to save unnecessary energy used by street lamps that remain lit at night. This tool will assist us in performing the necessary calculations for our project. The FLL team is an extracurricular activity in which I participate.
 
 ## Technologies
 
@@ -15,14 +15,20 @@ As the captain of my school's FLL team, I developed a tool for our innovative pr
 ## Installation
 
 ```bash
-git clone https://github.com/DrShahinstein/voltran-math.git
+$ git clone https://github.com/DrShahinstein/voltran-math.git
 cd voltran-math/
-yarn
-yarn start
+[voltran-math]$ yarn
+
 cd server/
-python3 manage.py makemigrations
-python3 manage.py migrate
-python3 manage.py runserver
+[server]$ python manage.py makemigrations
+[serve¶]$ python manage.py migrate
+```
+
+### Run Locally
+
+```bash
+[voltran-math]$ yarn start
+[voltran-math]$ python ./server/manage.py runserver
 ```
 
 ## Contributing
