@@ -19,7 +19,7 @@ $ git clone https://github.com/DrShahinstein/voltran-math.git
 $ cd voltran-math/
 [voltran-math]$ yarn
 
-cd server/
+$ cd server/
 [server]$ python manage.py makemigrations
 [server]$ python manage.py migrate
 ```
