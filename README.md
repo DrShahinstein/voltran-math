@@ -16,12 +16,12 @@ As the captain and programmer of my school's FLL team, I developed a tool for ou
 
 ```bash
 $ git clone https://github.com/DrShahinstein/voltran-math.git
-cd voltran-math/
+$ cd voltran-math/
 [voltran-math]$ yarn
 
 cd server/
 [server]$ python manage.py makemigrations
-[serve¶]$ python manage.py migrate
+[server]$ python manage.py migrate
 ```
 
 ### Run Locally
