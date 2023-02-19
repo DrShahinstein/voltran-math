@@ -17,6 +17,7 @@ As the captain and programmer of my school's FLL team, I developed a tool for ou
 ```bash
 $ git clone https://github.com/DrShahinstein/voltran-math.git
 $ cd voltran-math/
+[voltran-math]$ touch .env # set the env variables here
 [voltran-math]$ yarn
 
 $ cd server/
@@ -31,6 +32,14 @@ $ cd server/
 [voltran-math]$ yarn start
 [voltran-math]$ python ./server/manage.py runserver
 ```
+
+## Environment Variables
+
+| Env Variable        | Value                         | Sample                                                |
+| ------------------- | ----------------------------- | ----------------------------------------------------- |
+| `REACT_APP_API_URL` | URL to the Django API         | `http://127.0.0.1:8000/api`                           |
+| `DEBUG`             | Boolean to declare debug mode | `True`                                                |
+| `DJANGO_SECRET_KEY` | The secret key for Django     | `i7=eu7cnh0ie3$k-%ju67#s-j-!!z\_\*2a82q0jzdjn-vgox06` |
 
 ## Contributing
 
