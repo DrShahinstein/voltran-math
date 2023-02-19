@@ -23,6 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Django
+static
 __pycache__
 db.sqlite3
 .env
