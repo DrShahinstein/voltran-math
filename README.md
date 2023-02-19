@@ -20,6 +20,7 @@ $ cd voltran-math/
 [voltran-math]$ yarn
 
 $ cd server/
+[server]$ pip install -r requirements.txt
 [server]$ python manage.py makemigrations
 [server]$ python manage.py migrate
 ```
