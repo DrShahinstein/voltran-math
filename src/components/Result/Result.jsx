@@ -69,7 +69,7 @@ export default function Result(props) {
         {props.header ? (
           props.header
         ) : (
-          <header className="result-header">
+          <header className="result-header w-11/12 sm:w-2/3 lg:w-1/2 xl:w-1/3 !rounded-b-none">
             <input
               type="text"
               className="result-header--input"
@@ -83,7 +83,7 @@ export default function Result(props) {
             </button>
           </header>
         )}
-        <div className="result-container--inner">
+        <div className="result-container--inner !rounded-t-none">
           <div className="mb-6">
             <h2 className="result-title">In [{inputCount}]</h2>
             <div className="result-content">
