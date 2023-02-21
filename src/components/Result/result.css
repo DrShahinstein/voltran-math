@@ -41,7 +41,7 @@
   @apply border-gray-400;
   @apply p-2;
   @apply rounded-lg;
-  @apply rounded-r-none;
+  @apply !rounded-r-none;
   @apply focus:outline-none;
 }
 
