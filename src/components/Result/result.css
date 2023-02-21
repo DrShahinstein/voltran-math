@@ -26,6 +26,7 @@
   @apply justify-between;
   @apply items-center;
   @apply shadow-lg;
+  @apply rounded-md;
 }
 
 .result-header--name {
@@ -123,6 +124,7 @@
 @media only screen and (max-width: 650px) {
   .result-container {
     @apply h-auto;
+    @apply my-[3rem];
   }
   .result-title {
     @apply text-xl;
