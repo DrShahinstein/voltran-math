@@ -11,19 +11,12 @@ export default function App() {
   const [showResultsList, setShowResultsList] = useState(false);
   const [inputs, setInputs] = useState([]);
   const [outputs, setOutputs] = useState([]);
-  const inputNames = ["xInput", "yInput", "zInput", "aInput"]; // Desired inputs
-  const outputNames = ["xOutput", "yOutput", "zOutput", "aOutput"]; // Desired outputs
-  const formulations = {
-    xOutput: 0, // Desired formula goes here
-    yOutput: 0, // Desired formula goes here
-    zOutput: 0, // Desired formula goes here
-    aOutput: 0, // Desired formula goes here
-  };
+  const inputNames = ["power", "hours", "lamps"];
+  const outputNames = ["energy"];
   const refs = {
-    xInput: useRef(null),
-    yInput: useRef(null),
-    zInput: useRef(null),
-    aInput: useRef(null),
+    power: useRef(null),
+    hours: useRef(null),
+    lamps: useRef(null),
   };
 
   const showResults = () => {
@@ -32,6 +25,13 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formulations = {
+      energy:
+        refs.power.current.value *
+        refs.hours.current.value *
+        refs.lamps.current.value,
+    };
 
     const inputs = inputNames.map((name) => {
       return { name: name, value: parseInt(refs[name].current.value) };
@@ -65,10 +65,9 @@ export default function App() {
         <Title>Voltran MathLab</Title>
         <Title.Subtitle>Girdileri girin ve hesaplayın!</Title.Subtitle>
         <Form handler={handleSubmit}>
-          <Form.Input ref={refs.xInput}>X Giriniz</Form.Input>
-          <Form.Input ref={refs.yInput}>Y Giriniz</Form.Input>
-          <Form.Input ref={refs.zInput}>Z Giriniz</Form.Input>
-          <Form.Input ref={refs.aInput}>A Giriniz</Form.Input>
+          <Form.Input ref={refs.power}>Güç</Form.Input>
+          <Form.Input ref={refs.hours}>Zaman</Form.Input>
+          <Form.Input ref={refs.lamps}>Lamba Sayısı</Form.Input>
           <div className="form-buttons">
             <button type="button" className="btn-results" onClick={showResults}>
               Results
