@@ -14,6 +14,7 @@ const Input = forwardRef((props, ref) => {
     <label className="block mb-2">
       <input
         type="number"
+        step="any"
         className="input"
         placeholder={props.children}
         ref={ref}
