@@ -43,7 +43,7 @@ export default function App() {
     const inputs = inputNames.map((name) => {
       return {
         name: readable(name),
-        value: parseInt(refs[name].current.value),
+        value: parseFloat(refs[name].current.value),
       };
     });
 
