@@ -3,7 +3,7 @@
   @apply flex-col;
   @apply items-center;
   @apply justify-center;
-  @apply h-screen;
+  @apply h-[70vh];
   @apply bg-gray-100;
 }
 
