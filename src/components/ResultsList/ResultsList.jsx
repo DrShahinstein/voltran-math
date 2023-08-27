@@ -4,6 +4,7 @@ import Result from "../Result/Result";
 import Modal from "../Modal/Modal";
 import axios from "axios";
 import "./resultslist.css";
+import Preloader from "../Preloader/Preloader";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -17,6 +18,7 @@ export default class ResultsList extends Component {
       results: [],
       modalContent: { title: "", text: "" },
       isModalVisible: false,
+      loading: true,
     };
   }
 
@@ -64,7 +66,7 @@ export default class ResultsList extends Component {
             this.setState({
               modalContent: {
                 ...modalContent,
-                text: <span>Something went wrong.</span>,
+                text: <span>Something went wrong with server</span>,
               },
             });
             break;
@@ -81,8 +83,8 @@ export default class ResultsList extends Component {
     this.setState({ isModalVisible: visible });
   };
 
-  componentDidMount() {
-    axios
+  async componentDidMount() {
+    await axios
       .get(`${API}/results/`)
       .then((res) => {
         this.setState({ results: res.data });
@@ -96,9 +98,11 @@ export default class ResultsList extends Component {
           isModalVisible: true,
         });
       });
+    this.setState({ loading: false });
   }
 
   render() {
+    if (this.state.loading) return <Preloader />;
     return (
       <>
         <div className="result-list">
