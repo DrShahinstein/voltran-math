@@ -73,7 +73,7 @@ export default function App() {
     <Layout>
       <div className="max-w-md mx-auto p-10">
         <Title>Voltran MathLab</Title>
-        <Title.Subtitle>Girdileri girin ve hesaplayın!</Title.Subtitle>
+        <Title.Subtitle>Girdileri yazın ve hesaplayın!</Title.Subtitle>
         <Form handler={handleSubmit}>
           <Form.Input ref={refs.power}>Güç</Form.Input>
           <Form.Input ref={refs.hours}>Zaman</Form.Input>
