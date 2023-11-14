@@ -4,6 +4,7 @@
   @apply items-center;
   @apply justify-center;
   @apply h-[70vh];
+  @apply w-[100%];
   @apply bg-gray-100;
 }
 
