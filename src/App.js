@@ -75,8 +75,8 @@ export default function App() {
         <Title>Voltran MathLab</Title>
         <Title.Subtitle>Girdileri yazın ve hesaplayın!</Title.Subtitle>
         <Form handler={handleSubmit}>
-          <Form.Input ref={refs.power}>Güç</Form.Input>
-          <Form.Input ref={refs.hours}>Zaman</Form.Input>
+          <Form.Input ref={refs.power}>Güç (kw)</Form.Input>
+          <Form.Input ref={refs.hours}>Zaman (saat)</Form.Input>
           <Form.Input ref={refs.lamps}>Lamba Sayısı</Form.Input>
           <Form.Input ref={refs.lampsUnitPrice}>Lamba Birim Fiyatı</Form.Input>
           <div className="form-buttons">
