@@ -16,7 +16,15 @@
 }
 
 .btn-back {
-    @apply absolute;
-    @apply text-2xl;
-    @apply m-2;
+  @apply absolute;
+  @apply text-2xl;
+  @apply m-2;
+}
+
+.result-view {
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
+  @apply border-b-slate-900 border-b-4;
+  @apply pb-[5rem];
 }
