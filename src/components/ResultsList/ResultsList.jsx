@@ -3,8 +3,9 @@ import { BsFillTrashFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
 import Result from "../Result/Result";
 import Modal from "../Modal/Modal";
 import axios from "axios";
-import "./resultslist.css";
+import Chart from "../Chart/Chart";
 import Preloader from "../Preloader/Preloader";
+import "./resultslist.css";
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -112,7 +113,7 @@ export default class ResultsList extends Component {
     return (
       <>
         <div className="result-list">
-          <div className="result-list--outer">
+          <div className="result-list--inner">
             {this.state.results.length === 0 ? (
               <div className="empty-response">
                 <h1 className="empty-res-msg">No results available</h1>
@@ -128,7 +129,7 @@ export default class ResultsList extends Component {
                 {this.state.results.map((result) => {
                   const name = result.result_name;
                   return (
-                    <Fragment key={name}>
+                    <div className="result-view" key={name}>
                       <Result
                         inputs={result.inputs}
                         outputs={result.outputs}
@@ -146,7 +147,9 @@ export default class ResultsList extends Component {
                           </header>
                         }
                       />
-                    </Fragment>
+                      
+                      <Chart />
+                    </div>
                   );
                 })}
               </>
