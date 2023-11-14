@@ -12,6 +12,7 @@
     "react-icons": "^4.7.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",
+    "recharts": "^2.9.3",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
