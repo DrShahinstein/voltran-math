@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillTrashFill, BsFillArrowLeftSquareFill } from "react-icons/bs";
 import Result from "../Result/Result";
 import Modal from "../Modal/Modal";
 import axios from "axios";
@@ -14,6 +14,8 @@ export default class ResultsList extends Component {
 
     this.deleteResult = this.deleteResult.bind(this);
     this.setIsModalVisible = this.setIsModalVisible.bind(this);
+    this.back = this.back.bind(this);
+
     this.state = {
       results: [],
       modalContent: { title: "", text: "" },
@@ -101,36 +103,54 @@ export default class ResultsList extends Component {
     this.setState({ loading: false });
   }
 
+  back() {
+    this.props.setShowResultsList(false);
+  }
+
   render() {
     if (this.state.loading) return <Preloader />;
     return (
       <>
         <div className="result-list">
           <div className="result-list--outer">
-            {this.state.results.map((result) => {
-              const name = result.result_name;
-              return (
-                <Fragment key={name}>
-                  <Result
-                    inputs={result.inputs}
-                    outputs={result.outputs}
-                    footerElement={
-                      <span
-                        className="result-footer--delete"
-                        onClick={() => this.deleteResult(name)}
-                      >
-                        <BsFillTrashFill />
-                      </span>
-                    }
-                    header={
-                      <header className="result-header">
-                        <h1 className="result-header--name">{name}</h1>
-                      </header>
-                    }
-                  />
-                </Fragment>
-              );
-            })}
+            {this.state.results.length === 0 ? (
+              <div className="empty-response">
+                <h1 className="empty-res-msg">No results available</h1>
+                <button className="empty-res-btn-back" onClick={this.back}>
+                  Back
+                </button>
+              </div>
+            ) : (
+              <>
+                <button className="btn-back" onClick={this.back}>
+                  <BsFillArrowLeftSquareFill />
+                </button>
+                {this.state.results.map((result) => {
+                  const name = result.result_name;
+                  return (
+                    <Fragment key={name}>
+                      <Result
+                        inputs={result.inputs}
+                        outputs={result.outputs}
+                        footerElement={
+                          <span
+                            className="result-footer--delete"
+                            onClick={() => this.deleteResult(name)}
+                          >
+                            <BsFillTrashFill />
+                          </span>
+                        }
+                        header={
+                          <header className="result-header">
+                            <h1 className="result-header--name">{name}</h1>
+                          </header>
+                        }
+                      />
+                    </Fragment>
+                  );
+                })}
+              </>
+            )}
           </div>
         </div>
 
