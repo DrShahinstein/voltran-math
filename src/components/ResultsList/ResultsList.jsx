@@ -96,7 +96,7 @@ export default class ResultsList extends Component {
         this.setState({
           modalContent: {
             title: err.message,
-            text: "Something went wrong.",
+            text: "Something went wrong with the server",
           },
           isModalVisible: true,
         });
@@ -131,8 +131,10 @@ export default class ResultsList extends Component {
                   return (
                     <div className="result-view" key={name}>
                       <Result
-                        inputs={result.inputs}
-                        outputs={result.outputs}
+                        advInputs={result.advInputs}
+                        advOutputs={result.advOutputs}
+                        stdInputs={result.stdInputs}
+                        stdOutputs={result.stdOutputs}
                         footerElement={
                           <span
                             className="result-footer--delete"
@@ -147,8 +149,11 @@ export default class ResultsList extends Component {
                           </header>
                         }
                       />
-                      
-                      <Chart />
+
+                      <Chart
+                        advancedUseofEnergy={result.advOutputs.energyConsumed}
+                        standartUseOfEnergy={result.stdOutputs.energyConsumed}
+                      />
                     </div>
                   );
                 })}
