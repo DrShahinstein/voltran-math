@@ -1,17 +1,5 @@
 .layout {
-  @apply w-full;
-  @apply h-screen;
-  @apply bg-gray-100;
+  @apply !bg-gray-100;
   @apply flex;
   @apply items-center;
-}
-
-.layout div {
-  @apply translate-y-[-20%];
-}
-
-@media only screen and (max-width: 650px) {
-  .layout div {
-    @apply translate-y-0;
-  }
 }
