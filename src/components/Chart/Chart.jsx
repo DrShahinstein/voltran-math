@@ -11,13 +11,25 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Chart(props) {
-  const data = [
-    { name: "2023", advanced: 3000, standart: 5000 },
-    { name: "2024", advanced: 4000, standart: 7000 },
-    { name: "2025", advanced: 4800, standart: 10000 },
-    { name: "2026", advanced: 5400, standart: 14000 },
-  ];
+const generateChartData = (x, y, multiplier, years) => {
+  const data = [];
+
+  for (let i = 0; i < years; i++) {
+    data.push({
+      name: `${2023 + i}`,
+      advanced: x * Math.pow(multiplier, i),
+      standart: y * Math.pow(multiplier, i),
+    });
+  }
+
+  return data;
+};
+
+export default function Chart({ advancedUseOfEnergy, standartUseOfEnergy }) {
+  const x = advancedUseOfEnergy;
+  const y = standartUseOfEnergy;
+  const data = generateChartData(x, y, 2, 5);
+
   return (
     <ResponsiveContainer className="chart-container">
       <LineChart className="chart" width="100%" height="auto" data={data}>
