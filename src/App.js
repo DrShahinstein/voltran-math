@@ -6,61 +6,90 @@ import Result from "./components/Result/Result";
 import ResultsList from "./components/ResultsList/ResultsList";
 import "./App.css";
 
+// An independent function utility out of the React flow to refactor and maintain how inputs and outputs are created
+const process = (refs) => {
+  const unpackedRefValues = {
+    power: refs.power.current.value,
+    hours: refs.hours.current.value,
+    lampsCount: refs.lampsCount.current.value,
+    lampsUnitPrice: refs.lampsUnitPrice.current.value,
+  };
+
+  const inputs = [
+    { name: "Power (kWh)", power: unpackedRefValues.power },
+    { name: "Time (h/24)", hours: unpackedRefValues.hours },
+    { name: "Lamps (count)", lampsCount: unpackedRefValues.lampsCount },
+    {
+      name: "Unit Price (₺)",
+      lampsUnitPrice: unpackedRefValues.lampsUnitPrice,
+    },
+  ];
+
+  const outputs = [
+    {
+      name: "Consumed Energy",
+      energyConsumed:
+        unpackedRefValues.power *
+        unpackedRefValues.hours *
+        unpackedRefValues.lampsCount,
+    },
+    {
+      name: "Cost",
+      cost: unpackedRefValues.lampsUnitPrice * unpackedRefValues.lampsCount,
+    },
+  ];
+
+  return { inputs, outputs };
+};
+
 export default function App() {
   const [resultVisibility, setResultVisibility] = useState(false);
   const [showResultsList, setShowResultsList] = useState(false);
-  const [inputs, setInputs] = useState([]);
-  const [outputs, setOutputs] = useState([]);
-  const inputNames = ["power", "hours", "lamps", "lampsUnitPrice"];
-  const outputNames = ["energy", "lampsCost"];
-  const refs = {
+  const [advInputs, setAdvInputs] = useState([]);
+  const [stdInputs, setStdInputs] = useState([]);
+  const [advOutputs, setAdvOutputs] = useState([]);
+  const [stdOutputs, setStdOutputs] = useState([]);
+
+  const refsAdv = {
     power: useRef(null),
     hours: useRef(null),
-    lamps: useRef(null),
+    lampsCount: useRef(null),
     lampsUnitPrice: useRef(null),
   };
 
-  const readable = (name) => {
-    // Used to split and lower a camelCase input name
-    return name.replace(/([a-z](?=[A-Z]))/g, "$1 ").toLowerCase();
+  const refsStd = {
+    power: useRef(null),
+    hours: useRef(null),
+    lampsCount: useRef(null),
+    lampsUnitPrice: useRef(null),
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const advData = process(refsAdv);
+    const stdData = process(refsStd);
+
+    setAdvInputs(advData.inputs);
+    setAdvOutputs(advData.outputs);
+
+    setStdInputs(stdData.inputs);
+    setStdOutputs(stdData.outputs);
+
+    setResultVisibility(true);
   };
 
   const showResults = () => {
     setShowResultsList(true);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const formulations = {
-      energy:
-        refs.power.current.value *
-        refs.hours.current.value *
-        refs.lamps.current.value,
-      lampsCost: refs.lampsUnitPrice.current.value * refs.lamps.current.value,
-    };
-
-    const inputs = inputNames.map((name) => {
-      return {
-        name: readable(name),
-        value: parseFloat(refs[name].current.value),
-      };
-    });
-
-    const outputs = outputNames.map((name) => {
-      return { name: readable(name), value: formulations[name] };
-    });
-
-    setInputs(inputs);
-    setOutputs(outputs);
-    setResultVisibility(true);
-  };
-
   if (resultVisibility)
     return (
       <Result
-        inputs={inputs}
-        outputs={outputs}
+        advInputs={advInputs}
+        stdInputs={stdInputs}
+        advOutputs={advOutputs}
+        stdOutputs={stdOutputs}
         setResultVisibility={setResultVisibility}
       />
     );
@@ -73,12 +102,34 @@ export default function App() {
     <Layout>
       <div className="max-w-md mx-auto p-10">
         <Title>Voltran MathLab</Title>
-        <Title.Subtitle>Girdileri yazın ve hesaplayın!</Title.Subtitle>
+        <Title.Subtitle>Enter inputs and calculate!</Title.Subtitle>
         <Form handler={handleSubmit}>
-          <Form.Input ref={refs.power}>Güç (kw)</Form.Input>
-          <Form.Input ref={refs.hours}>Zaman (saat)</Form.Input>
-          <Form.Input ref={refs.lamps}>Lamba Sayısı</Form.Input>
-          <Form.Input ref={refs.lampsUnitPrice}>Lamba Birim Fiyatı</Form.Input>
+          <section>
+            <h1 className="text-lg">Advanced Lights</h1>
+            <div>
+              <Form.Input id="power--advanced" ref={refsAdv.power}>
+                Power (kWh)
+              </Form.Input>
+              <Form.Input ref={refsAdv.hours}>Time (h/24)</Form.Input>
+              <Form.Input ref={refsAdv.lampsCount}>Lamps (count)</Form.Input>
+              <Form.Input ref={refsAdv.lampsUnitPrice}>
+                Unit Price (for lamps)
+              </Form.Input>
+            </div>
+          </section>
+
+          <section>
+            <h1 className="text-lg">Standart Lights</h1>
+            <div>
+              <Form.Input ref={refsStd.power}>Power (kWh)</Form.Input>
+              <Form.Input ref={refsStd.hours}>Time (h/24)</Form.Input>
+              <Form.Input ref={refsStd.lampsCount}>Lamps (count)</Form.Input>
+              <Form.Input ref={refsStd.lampsUnitPrice}>
+                Unit Price (for lamps)
+              </Form.Input>
+            </div>
+          </section>
+
           <div className="form-buttons">
             <button type="button" className="btn-results" onClick={showResults}>
               Results
