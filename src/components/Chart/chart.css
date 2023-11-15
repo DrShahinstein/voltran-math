@@ -1,0 +1,22 @@
+.chart-container {
+  min-width: 300px !important;
+  min-height: 90px !important;
+  max-width: 650px !important;
+  max-height: 450px !important;
+  width: 650px !important;
+  height: 450px !important;
+}
+
+@media only screen and (max-width: 1200px) {
+  .chart-container {
+    width: 80% !important;
+    height: 340px !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .chart-container {
+    width: 80% !important;
+    height: 280px !important;
+  }
+}
