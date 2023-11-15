@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 
 export default function Chart(props) {
@@ -18,19 +19,21 @@ export default function Chart(props) {
     { name: "2026", advanced: 5400, standart: 14000 },
   ];
   return (
-    <LineChart width={650} height={450} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line
-        type="monotone"
-        dataKey="advanced"
-        stroke="#0000ff"
-        activeDot={{ r: 8 }}
-      />
-      <Line type="monotone" dataKey="standart" stroke="#ff0000" />
-    </LineChart>
+    <ResponsiveContainer className="chart-container">
+      <LineChart className="chart" width="100%" height="auto" data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line
+          type="monotone"
+          dataKey="advanced"
+          stroke="#0000ff"
+          activeDot={{ r: 8 }}
+        />
+        <Line type="monotone" dataKey="standart" stroke="#ff0000" />
+      </LineChart>
+    </ResponsiveContainer>
   );
 }
