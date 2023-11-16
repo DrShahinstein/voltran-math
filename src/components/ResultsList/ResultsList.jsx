@@ -151,8 +151,12 @@ export default class ResultsList extends Component {
                       />
 
                       <Chart
-                        advancedUseofEnergy={result.advOutputs.energy_consumed}
-                        standartUseOfEnergy={result.stdOutputs.energy_consumed}
+                        advancedUseofEnergy={
+                          result.advOutputs[0].energy_consumed
+                        }
+                        standartUseOfEnergy={
+                          result.stdOutputs[0].energy_consumed
+                        }
                       />
                     </div>
                   );
