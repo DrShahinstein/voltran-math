@@ -8,10 +8,10 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = ["drshahinstein.pythonanywhere.com", "http://localhost:3000"]
+ALLOWED_HOSTS = ["drshahinstein.pythonanywhere.com", "http://127.0.0.1:8000"]
 
 CORS_ALLOWED_ORIGINS = [
-    "drshahinstein.pythonanywhere.com" "http://localhost:3000",
+    "drshahinstein.pythonanywhere.com" "http://127.0.0.1:8000",
 ]
 
 INSTALLED_APPS = [
