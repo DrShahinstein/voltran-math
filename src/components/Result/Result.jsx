@@ -81,12 +81,12 @@ export default function Result(props) {
   };
 
   const formatNumber = (originalNumber) => {
-    // Check if the originalNumber is a decimal
+    console.log(typeof originalNumber);
+
     if (/^\d*\.?\d+$/.test(originalNumber)) {
       return originalNumber;
     }
 
-    // If not a decimal, convert to a decimal with one decimal place and replace dot with comma
     return parseFloat(originalNumber).toFixed(1).replace(".", ",");
   };
 
