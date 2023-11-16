@@ -11,31 +11,31 @@ const process = (refs) => {
   const unpackedRefValues = {
     power: refs.power.current.value,
     hours: refs.hours.current.value,
-    lampsCount: refs.lampsCount.current.value,
-    lampsUnitPrice: refs.lampsUnitPrice.current.value,
+    lamps_count: refs.lamps_count.current.value,
+    lamps_unit_price: refs.lamps_unit_price.current.value,
   };
 
   const inputs = [
     { name: "Power (kWh)", power: unpackedRefValues.power },
     { name: "Time (h/24)", hours: unpackedRefValues.hours },
-    { name: "Lamps (count)", lampsCount: unpackedRefValues.lampsCount },
+    { name: "Lamps (count)", lamps_count: unpackedRefValues.lamps_count },
     {
       name: "Unit Price (₺)",
-      lampsUnitPrice: unpackedRefValues.lampsUnitPrice,
+      lamps_unit_price: unpackedRefValues.lamps_unit_price,
     },
   ];
 
   const outputs = [
     {
       name: "Consumed Energy",
-      energyConsumed:
+      energy_consumed:
         unpackedRefValues.power *
         unpackedRefValues.hours *
-        unpackedRefValues.lampsCount,
+        unpackedRefValues.lamps_count,
     },
     {
-      name: "Cost",
-      cost: unpackedRefValues.lampsUnitPrice * unpackedRefValues.lampsCount,
+      name: "Cost (₺)",
+      cost: unpackedRefValues.lamps_unit_price * unpackedRefValues.lamps_count,
     },
   ];
 
@@ -53,15 +53,15 @@ export default function App() {
   const refsAdv = {
     power: useRef(null),
     hours: useRef(null),
-    lampsCount: useRef(null),
-    lampsUnitPrice: useRef(null),
+    lamps_count: useRef(null),
+    lamps_unit_price: useRef(null),
   };
 
   const refsStd = {
     power: useRef(null),
     hours: useRef(null),
-    lampsCount: useRef(null),
-    lampsUnitPrice: useRef(null),
+    lamps_count: useRef(null),
+    lamps_unit_price: useRef(null),
   };
 
   const handleSubmit = (e) => {
@@ -111,8 +111,8 @@ export default function App() {
                 Power (kWh)
               </Form.Input>
               <Form.Input ref={refsAdv.hours}>Time (h/24)</Form.Input>
-              <Form.Input ref={refsAdv.lampsCount}>Lamps (count)</Form.Input>
-              <Form.Input ref={refsAdv.lampsUnitPrice}>
+              <Form.Input ref={refsAdv.lamps_count}>Lamps (count)</Form.Input>
+              <Form.Input ref={refsAdv.lamps_unit_price}>
                 Unit Price (for lamps)
               </Form.Input>
             </div>
@@ -123,8 +123,8 @@ export default function App() {
             <div>
               <Form.Input ref={refsStd.power}>Power (kWh)</Form.Input>
               <Form.Input ref={refsStd.hours}>Time (h/24)</Form.Input>
-              <Form.Input ref={refsStd.lampsCount}>Lamps (count)</Form.Input>
-              <Form.Input ref={refsStd.lampsUnitPrice}>
+              <Form.Input ref={refsStd.lamps_count}>Lamps (count)</Form.Input>
+              <Form.Input ref={refsStd.lamps_unit_price}>
                 Unit Price (for lamps)
               </Form.Input>
             </div>
