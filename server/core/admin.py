@@ -1,4 +1,11 @@
 from django.contrib import admin
-from .models import Result
+from .models import Result, Data
 
-admin.site.register(Result)
+
+class DataInline(admin.TabularInline):
+    model = Data
+
+
+@admin.register(Result)
+class ResultAdmin(admin.ModelAdmin):
+    inlines = [DataInline]
