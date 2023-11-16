@@ -80,14 +80,14 @@ export default function Result(props) {
     resultTitleRef.current.value = ""; // Reset <input>
   };
 
-  const formatNumber = (originalNumber) => {
-    console.log(typeof originalNumber);
+  const formatNumber = (incomingNumber) => {
+    const n = originalNumber.toString();
 
-    if (/^\d*\.?\d+$/.test(originalNumber)) {
-      return originalNumber;
+    if (/^\d*\.?\d+$/.test(n)) {
+      return n;
     }
 
-    return parseFloat(originalNumber).toFixed(1).replace(".", ",");
+    return parseFloat(n).toFixed(1).replace(".", ",");
   };
 
   return (
