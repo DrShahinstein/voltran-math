@@ -8,7 +8,11 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = ["drshahinstein.pythonanywhere.com", "http://127.0.0.1:8000"]
+ALLOWED_HOSTS = [
+    "drshahinstein.pythonanywhere.com",
+    "http://127.0.0.1:8000",
+    "127.0.0.1",
+]
 
 CORS_ALLOWED_ORIGINS = [
     "drshahinstein.pythonanywhere.com" "http://127.0.0.1:8000",
