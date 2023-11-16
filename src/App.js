@@ -16,11 +16,11 @@ const process = (refs) => {
   };
 
   const inputs = [
-    { name: "Power (kWh)", power: unpackedRefValues.power },
-    { name: "Time (h/24)", hours: unpackedRefValues.hours },
-    { name: "Lamps (count)", lamps_count: unpackedRefValues.lamps_count },
+    { name: "power", power: unpackedRefValues.power },
+    { name: "time", hours: unpackedRefValues.hours },
+    { name: "lamps", lamps_count: unpackedRefValues.lamps_count },
     {
-      name: "Unit Price (₺)",
+      name: "lamps_unit_price",
       lamps_unit_price: unpackedRefValues.lamps_unit_price,
     },
   ];
