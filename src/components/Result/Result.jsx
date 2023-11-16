@@ -81,8 +81,8 @@ export default function Result(props) {
   };
 
   const formatNumber = (originalNumber) => {
-    console.log(originalNumber);
-    return originalNumber.toFixed(2).replace(".", ",");
+    if (typeof originalNumber === "number") return originalNumber;
+    return parseFloat(originalNumber).toFixed(1).replace(".", ",");
   };
 
   return (
