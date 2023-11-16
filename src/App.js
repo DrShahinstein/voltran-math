@@ -27,14 +27,14 @@ const process = (refs) => {
 
   const outputs = [
     {
-      name: "Consumed Energy",
+      name: "energy_consumed",
       value:
         unpackedRefValues.power *
         unpackedRefValues.hours *
         unpackedRefValues.lamps_count,
     },
     {
-      name: "Cost (₺)",
+      name: "cost",
       value: unpackedRefValues.lamps_unit_price * unpackedRefValues.lamps_count,
     },
   ];
