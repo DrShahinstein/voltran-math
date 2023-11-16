@@ -128,12 +128,6 @@ export default class ResultsList extends Component {
                 </button>
 
                 {this.state.results.map((result) => {
-                  console.log(result);
-                  console.log(result.adv_outputs);
-                  console.log(result.adv_outputs[0]);
-                  console.log(result.adv_outputs[0].value);
-                  console.log("---");
-
                   const title = result.result_title;
                   const consumedEnergyAdv = result.adv_outputs[0].value;
                   const consumedEnergyStd = result.std_outputs[0].value;
@@ -161,7 +155,7 @@ export default class ResultsList extends Component {
                       />
 
                       <Chart
-                        advancedUseofEnergy={consumedEnergyAdv}
+                        advancedUseOfEnergy={consumedEnergyAdv}
                         standartUseOfEnergy={consumedEnergyStd}
                       />
                     </div>
