@@ -14,7 +14,7 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://drshahinstein.pythonanywhere.com",
+    "https://voltran-math.netlify.app",
     "http://127.0.0.1:8000",
 ]
 
