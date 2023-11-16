@@ -87,7 +87,10 @@ export default function Result(props) {
       return n;
     }
 
-    return parseFloat(n).toFixed(1).replace(".", ",");
+    const formattedNumber = parseFloat(n).toFixed(1);
+    const withoutTrailingZeros = formattedNumber.replace(/\.0$/, "");
+
+    return withoutTrailingZeros.replace(".", ",");
   };
 
   return (
