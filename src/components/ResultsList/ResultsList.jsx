@@ -127,6 +127,7 @@ export default class ResultsList extends Component {
                   <BsFillArrowLeftSquareFill />
                 </button>
                 {this.state.results.map((result) => {
+                  console.log(result);
                   const title = result.result_title;
                   return (
                     <div className="result-view" key={title}>
