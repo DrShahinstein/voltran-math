@@ -16,12 +16,12 @@ const process = (refs) => {
   };
 
   const inputs = [
-    { name: "power", power: unpackedRefValues.power },
-    { name: "time", hours: unpackedRefValues.hours },
-    { name: "lamps", lamps_count: unpackedRefValues.lamps_count },
+    { name: "power", value: unpackedRefValues.power },
+    { name: "time", value: unpackedRefValues.hours },
+    { name: "lamps", value: unpackedRefValues.lamps_count },
     {
       name: "lamps_unit_price",
-      lamps_unit_price: unpackedRefValues.lamps_unit_price,
+      value: unpackedRefValues.lamps_unit_price,
     },
   ];
 
