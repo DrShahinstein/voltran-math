@@ -80,6 +80,10 @@ export default function Result(props) {
     resultTitleRef.current.value = ""; // Reset <input>
   };
 
+  const formatNumber = (originalNumber) => {
+    return originalNumber.toFixed(2).replace(".", ",");
+  };
+
   return (
     <>
       <div className="result-container">
@@ -112,7 +116,9 @@ export default function Result(props) {
                       <h3 className="result-content-key">
                         {fieldTextConversions[input.name]}
                       </h3>
-                      <div className="result-content-value">{input.value}</div>
+                      <div className="result-content-value">
+                        {formatNumber(input.value)}
+                      </div>
                     </div>
                   );
                 })}
@@ -127,7 +133,9 @@ export default function Result(props) {
                       <h3 className="result-content-key">
                         {fieldTextConversions[output.name]}
                       </h3>
-                      <div className="result-content-value">{output.value}</div>
+                      <div className="result-content-value">
+                        {formatNumber(output.value)}
+                      </div>
                     </div>
                   );
                 })}
@@ -146,7 +154,9 @@ export default function Result(props) {
                       <h3 className="result-content-key">
                         {fieldTextConversions[input.name]}
                       </h3>
-                      <div className="result-content-value">{input.value}</div>
+                      <div className="result-content-value">
+                        {formatNumber(input.value)}
+                      </div>
                     </div>
                   );
                 })}
@@ -161,7 +171,9 @@ export default function Result(props) {
                       <h3 className="result-content-key">
                         {fieldTextConversions[output.name]}
                       </h3>
-                      <div className="result-content-value">{output.value}</div>
+                      <div className="result-content-value">
+                        {formatNumber(output.value)}
+                      </div>
                     </div>
                   );
                 })}
