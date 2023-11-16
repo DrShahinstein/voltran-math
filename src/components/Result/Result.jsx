@@ -81,6 +81,7 @@ export default function Result(props) {
   };
 
   const formatNumber = (originalNumber) => {
+    console.log(originalNumber);
     return originalNumber.toFixed(2).replace(".", ",");
   };
 
