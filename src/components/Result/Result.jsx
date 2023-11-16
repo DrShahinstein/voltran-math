@@ -16,10 +16,10 @@ export default function Result(props) {
   const advOutputsCount = advOutputs.length;
   const stdOutputsCount = advOutputs.length;
   // The below are used to declare what fields does an input or output structure have, allows easy mapping in JSX
-  const inputFields = ["power", "hours", "lampsCount", "lampsUnitPrice"];
-  const outputFields = ["energyConsumed", "cost"];
+  const inputFields = ["power", "hours", "lamps_count", "lamps_unit_price"];
+  const outputFields = ["energy_consumed", "cost"];
 
-  const resultNameRef = useRef("result_name");
+  const resultTitleRef = useRef("result_title");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
@@ -32,19 +32,19 @@ export default function Result(props) {
   };
 
   const createResult = async () => {
-    var resultName = resultNameRef.current.value;
+    var resultTitle = resultTitleRef.current.value;
     let content = {
       title: "Saved!",
       text: (
         <span>
-          <code>{resultName}</code> successfully saved.
+          <code>{resultTitle}</code> successfully saved.
         </span>
       ),
     };
 
     await axios
       .post(`${API}/results/create/`, {
-        result_name: resultName,
+        result_title: resultTitle,
         advInputs,
         advOutputs,
         stdInputs,
@@ -58,8 +58,9 @@ export default function Result(props) {
         if (err.response.status === 400) {
           content.text = (
             <span>
-              A result with the name <code>{resultName}</code> is already
-              available Names must be unique
+              A result with the title <code>{resultTitle}</code> is already
+              available. <br />
+              Titles must be unique.
             </span>
           );
           setModalContent(content);
@@ -70,7 +71,7 @@ export default function Result(props) {
       });
 
     setIsModalVisible(true);
-    resultNameRef.current.value = ""; // Reset <input>
+    resultTitleRef.current.value = ""; // Reset <input>
   };
 
   return (
@@ -86,7 +87,7 @@ export default function Result(props) {
               id="result-name-input"
               placeholder="Result name goes here"
               onKeyDown={handleKeyDown}
-              ref={resultNameRef}
+              ref={resultTitleRef}
             />
             <button className="result-header--button" onClick={createResult}>
               Save
@@ -189,7 +190,7 @@ export default function Result(props) {
         content={modalContent}
         isVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-        elementToFocus={resultNameRef.current}
+        elementToFocus={resultTitleRef.current}
       />
     </>
   );

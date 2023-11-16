@@ -25,18 +25,18 @@ export default class ResultsList extends Component {
     };
   }
 
-  deleteResult = async (resultName) => {
+  deleteResult = async (resultTitle) => {
     /* 
-     resultName indicates the result to be deleted as we
+     resultTitle indicates the result to be deleted as we
      use names of results like an ID to distinguish them so that we can choose which one to delete
     */
 
     await axios
-      .delete(`${API}/results/${resultName}/`)
+      .delete(`${API}/results/${resultTitle}/`)
       .then(() => {
         this.setState((prevState) => ({
           results: prevState.results.filter(
-            (result) => result.result_name !== resultName
+            (result) => result.result_title !== resultTitle
           ),
         }));
       })
@@ -58,7 +58,7 @@ export default class ResultsList extends Component {
                 ...modalContent,
                 text: (
                   <span>
-                    Any result with the name <code>{resultName}</code> was not
+                    Any result with the title <code>{resultTitle}</code> was not
                     found
                   </span>
                 ),
@@ -127,9 +127,9 @@ export default class ResultsList extends Component {
                   <BsFillArrowLeftSquareFill />
                 </button>
                 {this.state.results.map((result) => {
-                  const name = result.result_name;
+                  const title = result.result_title;
                   return (
-                    <div className="result-view" key={name}>
+                    <div className="result-view" key={title}>
                       <Result
                         advInputs={result.advInputs}
                         advOutputs={result.advOutputs}
@@ -138,14 +138,14 @@ export default class ResultsList extends Component {
                         footerElement={
                           <span
                             className="result-footer--delete"
-                            onClick={() => this.deleteResult(name)}
+                            onClick={() => this.deleteResult(title)}
                           >
                             <BsFillTrashFill />
                           </span>
                         }
                         header={
                           <header className="result-header">
-                            <h1 className="result-header--name">{name}</h1>
+                            <h1 className="result-header--name">{title}</h1>
                           </header>
                         }
                       />
