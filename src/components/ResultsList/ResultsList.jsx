@@ -9,15 +9,6 @@ import "./resultslist.css";
 
 const API = process.env.REACT_APP_API_URL;
 
-const fieldTitleConversions = {
-  power: "Power (kWh)",
-  time: "Time (h/24)",
-  lamps: "Lamps (count)",
-  lamps_unit_price: "Unit Price (₺)",
-  energy_consumed: "Consumed Energy",
-  cost: "Cost (₺)",
-};
-
 export default class ResultsList extends Component {
   constructor(props) {
     super(props);
@@ -135,8 +126,9 @@ export default class ResultsList extends Component {
                 <button className="btn-back" onClick={this.back}>
                   <BsFillArrowLeftSquareFill />
                 </button>
+
                 {this.state.results.map((result) => {
-                  const title = fieldTitleConversions[result.result_title];
+                  const title = result.result_title;
                   const consumedEnergyAdv = result.adv_outputs[0].value;
                   const consumedEnergyStd = result.std_outputs[0].value;
 
