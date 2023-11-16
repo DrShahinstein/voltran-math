@@ -10,11 +10,13 @@ DEBUG = config("DEBUG", cast=bool)
 
 ALLOWED_HOSTS = [
     "drshahinstein.pythonanywhere.com",
-    "http://127.0.0.1:8000",
     "127.0.0.1",
 ]
 
-CORS_ALLOWED_ORIGINS = ["drshahinstein.pythonanywhere.com", "http://127.0.0.1:8000"]
+CORS_ALLOWED_ORIGINS = [
+    "https://drshahinstein.pythonanywhere.com",
+    "http://127.0.0.1:8000",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
