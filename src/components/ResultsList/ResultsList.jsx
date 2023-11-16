@@ -131,10 +131,10 @@ export default class ResultsList extends Component {
                   return (
                     <div className="result-view" key={title}>
                       <Result
-                        advInputs={result.advInputs}
-                        advOutputs={result.advOutputs}
-                        stdInputs={result.stdInputs}
-                        stdOutputs={result.stdOutputs}
+                        advInputs={result.adv_inputs}
+                        advOutputs={result.adv_outputs}
+                        stdInputs={result.std_inputs}
+                        stdOutputs={result.std_outputs}
                         footerElement={
                           <span
                             className="result-footer--delete"
