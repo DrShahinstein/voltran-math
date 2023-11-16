@@ -127,8 +127,10 @@ export default class ResultsList extends Component {
                   <BsFillArrowLeftSquareFill />
                 </button>
                 {this.state.results.map((result) => {
-                  console.log(result);
                   const title = result.result_title;
+                  const consumedEnergyAdv = result.adv_outputs[0].value;
+                  const consumedEnergyStd = result.std_outputs[0].value;
+
                   return (
                     <div className="result-view" key={title}>
                       <Result
@@ -152,12 +154,8 @@ export default class ResultsList extends Component {
                       />
 
                       <Chart
-                        advancedUseofEnergy={
-                          result.adv_outputs[0].energy_consumed
-                        }
-                        standartUseOfEnergy={
-                          result.std_outputs[0].energy_consumed
-                        }
+                        advancedUseofEnergy={consumedEnergyAdv}
+                        standartUseOfEnergy={consumedEnergyStd}
                       />
                     </div>
                   );
