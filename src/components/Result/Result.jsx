@@ -83,7 +83,7 @@ export default function Result(props) {
   const formatNumber = (incomingNumber) => {
     const n = incomingNumber.toString();
 
-    if (/^\d*\.?\d+$/.test(n)) {
+    if (/^[-+]?\d+$/.test(n)) {
       return n;
     }
 
