@@ -15,9 +15,15 @@ export default function Result(props) {
   const stdInputsCount = stdInputs.length;
   const advOutputsCount = advOutputs.length;
   const stdOutputsCount = advOutputs.length;
-  // The below are used to declare what fields does an input or output structure have, allows easy mapping in JSX
-  const inputFields = ["power", "hours", "lamps_count", "lamps_unit_price"];
-  const outputFields = ["energy_consumed", "cost"];
+
+  const fieldTextConversions = {
+    power: "Power (kWh)",
+    time: "Time (h/24)",
+    lamps: "Lamps (count)",
+    lamps_unit_price: "Unit Price (₺)",
+    energy_consumed: "Consumed Energy",
+    cost: "Cost (₺)",
+  };
 
   const resultTitleRef = useRef("result_title");
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -103,9 +109,11 @@ export default function Result(props) {
                 {advInputs.map((input, i) => {
                   return (
                     <div className="result-content--inner" key={i}>
-                      <h3 className="result-content-key">{input.name}</h3>
+                      <h3 className="result-content-key">
+                        {fieldTextConversions[input.name]}
+                      </h3>
                       <div className="result-content-value">
-                        {input[inputFields[i]]}
+                        {input[i].value}
                       </div>
                     </div>
                   );
@@ -118,9 +126,11 @@ export default function Result(props) {
                 {advOutputs.map((output, i) => {
                   return (
                     <div className="result-content--inner" key={i}>
-                      <h3 className="result-content-key">{output.name}</h3>
+                      <h3 className="result-content-key">
+                        {fieldTextConversions[output.name]}
+                      </h3>
                       <div className="result-content-value">
-                        {output[outputFields[i]]}
+                        {output[i].value}
                       </div>
                     </div>
                   );
@@ -137,9 +147,11 @@ export default function Result(props) {
                 {stdInputs.map((input, i) => {
                   return (
                     <div className="result-content--inner" key={i}>
-                      <h3 className="result-content-key">{input.name}</h3>
+                      <h3 className="result-content-key">
+                        {fieldTextConversions[input.name]}
+                      </h3>
                       <div className="result-content-value">
-                        {input[inputFields[i]]}
+                        {input[i].value}
                       </div>
                     </div>
                   );
@@ -152,9 +164,11 @@ export default function Result(props) {
                 {stdOutputs.map((output, i) => {
                   return (
                     <div className="result-content--inner" key={i}>
-                      <h3 className="result-content-key">{output.name}</h3>
+                      <h3 className="result-content-key">
+                        {fieldTextConversions[output.name]}
+                      </h3>
                       <div className="result-content-value">
-                        {output[outputFields[i]]}
+                        {output[[i].value]}
                       </div>
                     </div>
                   );
