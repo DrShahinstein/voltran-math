@@ -49,7 +49,7 @@ class Data(models.Model):
 
     def serialize(self):
         return {
-            "name": self.get_data_type_display(),
+            "name": self.field_type,
             "value": self.value,
         }
 
