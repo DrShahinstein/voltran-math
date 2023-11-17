@@ -8,15 +8,14 @@ SECRET_KEY = config("DJANGO_SECRET_KEY")
 
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS = [
-    "drshahinstein.pythonanywhere.com",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["drshahinstein.pythonanywhere.com", "127.0.0.1", "localhost"]
 
 CORS_ALLOWED_ORIGINS = [
     "https://voltran-math.netlify.app",
     "http://127.0.0.1:8000",
 ]
+
+CORS_ORIGIN_WHITELIST = ["https://localhost:3000"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
