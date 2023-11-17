@@ -1,4 +1,5 @@
 import json
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from rest_framework import generics, status
 from rest_framework.response import Response
@@ -14,6 +15,7 @@ def render_results(request):
 
 
 # POST
+@csrf_exempt
 def create_result(request):
     try:
         data = json.loads(request.body)
