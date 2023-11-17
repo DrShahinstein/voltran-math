@@ -13,9 +13,10 @@ ALLOWED_HOSTS = ["drshahinstein.pythonanywhere.com", "127.0.0.1", "localhost"]
 CORS_ALLOWED_ORIGINS = [
     "https://voltran-math.netlify.app",
     "http://127.0.0.1:8000",
+    "http://localhost:3000",
 ]
 
-CORS_ORIGIN_WHITELIST = ["https://localhost:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -108,4 +109,4 @@ CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
