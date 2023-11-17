@@ -9,7 +9,7 @@ urlpatterns = [
     path("api/results/", render_results, name="GET results"),
     path("api/results/create/", create_result, name="POST results"),
     path(
-        "api/results/<str:result_title>/",
+        "api/results/delete/<str:result_title>/",
         ResultDeleteView.as_view(),
         name="DELETE results",
     ),
