@@ -61,18 +61,27 @@ export default function Result(props) {
       })
       .catch((err) => {
         content.title = err.message;
-        if (err.response.status === 400) {
-          content.text = (
-            <span>
-              A result with the title <code>{resultTitle}</code> is already
-              available. <br />
-              Titles must be unique.
-            </span>
-          );
-          setModalContent(content);
-        } else {
-          content.text = "Something went wrong with the server";
-          setModalContent(content);
+
+        switch (err.response.status) {
+          case 400:
+            content.text = "Given json cannot be properly parsed";
+            break;
+
+          case 409:
+            content.text = (
+              <span>
+                A result with the title <code>{resultTitle}</code> is already
+                available. <br />
+                Titles must be unique.
+              </span>
+            );
+            setModalContent(content);
+            break;
+
+          default:
+            content.text = "Something went wrong with the server";
+            setModalContent(content);
+            break;
         }
       });
 
