@@ -51,10 +51,10 @@ export default function Result(props) {
     await axios
       .post(`${API}/results/create/`, {
         result_title: resultTitle,
-        advInputs,
-        advOutputs,
-        stdInputs,
-        stdOutputs,
+        adv_inputs: advInputs,
+        adv_outputs: advOutputs,
+        std_inputs: stdInputs,
+        std_outputs: stdOutputs,
       })
       .then(() => {
         setModalContent(content);
