@@ -11,14 +11,14 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const generateChartData = (x, y, multiplier, years) => {
+const generateChartData = (advEnergyUsage, stdEnergyUsage, years) => {
   const data = [];
 
   for (let i = 0; i < years; i++) {
     data.push({
       name: `${2023 + i}`,
-      advanced: x * Math.pow(multiplier, i),
-      standart: y * Math.pow(multiplier, i),
+      advanced: advEnergyUsage * i,
+      standart: stdEnergyUsage * i,
     });
   }
 
@@ -28,7 +28,7 @@ const generateChartData = (x, y, multiplier, years) => {
 export default function Chart({ advancedUseOfEnergy, standartUseOfEnergy }) {
   const x = advancedUseOfEnergy;
   const y = standartUseOfEnergy;
-  const data = generateChartData(x, y, 2, 5);
+  const data = generateChartData(x, y, 8);
 
   return (
     <ResponsiveContainer className="chart-container">
