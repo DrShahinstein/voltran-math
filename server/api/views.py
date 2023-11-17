@@ -23,6 +23,16 @@ def create_result(request):
         return JsonResponse({"error": "Invalid JSON format in the request"}, status=400)
 
     result_title = data.get("result_title", "no-title-entered")
+
+    if Result.objects.filter(title=result_title).exists():
+        return JsonResponse(
+            {
+                "error": f"Result with title '{result_title}' already exists",
+                "conflict": True,
+            },
+            status=409,
+        )
+
     description = data.get("description", "no-description")
     adv_inputs = data.get("adv_inputs", [])
     adv_outputs = data.get("adv_outputs", [])
