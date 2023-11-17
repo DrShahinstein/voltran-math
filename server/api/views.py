@@ -20,26 +20,33 @@ def create_result(request):
     except json.JSONDecodeError:
         return JsonResponse({"error": "Invalid JSON format in the request"}, status=400)
 
-    finally:
-        result_title = data.get("result_title")
-        adv_inputs   = data.get("adv_inputs")
-        adv_outputs  = data.get("adv_outputs")
-        std_inputs   = data.get("std_inputs")
-        std_outputs  = data.get("std_outputs")
+    result_title = data.get("result_title", "no-title-entered")
+    description = data.get("description", "no-description")
+    adv_inputs = data.get("adv_inputs", [])
+    adv_outputs = data.get("adv_outputs", [])
+    std_inputs = data.get("std_inputs", [])
+    std_outputs = data.get("std_outputs", [])
 
-        new_result = Result(
-            title=result_title,
-            adv_inputs=adv_inputs,
-            adv_outputs=adv_outputs,
-            std_inputs=std_inputs,
-            std_outputs=std_outputs,
-        )
+    new_result = Result.objects.create(title=result_title, description=description)
 
-        new_result.save()
+    def create_data_objects(data_list, data_type, lighting_type):
+        for item in data_list:
+            Data.objects.create(
+                result=new_result,
+                data_type=data_type,
+                lighting_type=lighting_type,
+                field_type=item["name"],
+                value=item["value"],
+            )
 
-        response_data = {"message": "Data added successfully"}
+    create_data_objects(adv_inputs, "input", "advanced")
+    create_data_objects(adv_outputs, "output", "advanced")
 
-        return JsonResponse(response_data)
+    create_data_objects(std_inputs, "input", "standard")
+    create_data_objects(std_outputs, "output", "standard")
+
+    response_data = {"message": "Data added successfully"}
+    return JsonResponse(response_data)
 
 
 class ResultDeleteView(generics.DestroyAPIView):
@@ -48,7 +55,7 @@ class ResultDeleteView(generics.DestroyAPIView):
 
     def delete(self, request, *args, **kwargs):
         result_title = self.kwargs.get("result_title")
-        result = self.queryset.filter(result_title=result_title).first()
+        result = self.queryset.filter(title=result_title).first()
         if result:
             result.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)
