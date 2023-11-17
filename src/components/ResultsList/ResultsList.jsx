@@ -32,7 +32,7 @@ export default class ResultsList extends Component {
     */
 
     await axios
-      .delete(`${API}/results/${resultTitle}/`)
+      .delete(`${API}/results/delete/${resultTitle}/`)
       .then(() => {
         this.setState((prevState) => ({
           results: prevState.results.filter(
