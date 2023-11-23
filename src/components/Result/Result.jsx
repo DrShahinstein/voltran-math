@@ -17,7 +17,7 @@ export default function Result(props) {
   const stdOutputsCount = advOutputs.length;
 
   const fieldTextConversions = {
-    power: "Power (kWh)",
+    power: "Power (Wh)",
     time: "Time (h/24)",
     lamps: "Lamps (count)",
     lamps_unit_price: "Unit Price (₺)",

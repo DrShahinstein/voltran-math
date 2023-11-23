@@ -108,7 +108,7 @@ export default function App() {
             <h1 className="text-lg">Advanced Lights</h1>
             <div>
               <Form.Input id="power--advanced" ref={refsAdv.power}>
-                Power (kWh)
+                Power (Wh)
               </Form.Input>
               <Form.Input ref={refsAdv.hours}>Time (h/24)</Form.Input>
               <Form.Input ref={refsAdv.lamps_count}>Lamps (count)</Form.Input>
@@ -121,7 +121,7 @@ export default function App() {
           <section>
             <h1 className="text-lg">Standart Lights</h1>
             <div>
-              <Form.Input ref={refsStd.power}>Power (kWh)</Form.Input>
+              <Form.Input ref={refsStd.power}>Power (Wh)</Form.Input>
               <Form.Input ref={refsStd.hours}>Time (h/24)</Form.Input>
               <Form.Input ref={refsStd.lamps_count}>Lamps (count)</Form.Input>
               <Form.Input ref={refsStd.lamps_unit_price}>
